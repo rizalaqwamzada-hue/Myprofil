@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Film List – Rizal</title>
+<style>
+:root{--bg:#0f1220;--card:#171a2e;--txt:#eaeaf0;--muted:#9aa0c3;--acc:#6c7cff}
+body.light{--bg:#f4f6ff;--card:#fff;--txt:#111;--muted:#555;--acc:#3b5cff}
+*{box-sizing:border-box;font-family:system-ui}
+body{margin:0;background:var(--bg);color:var(--txt)}
+header{padding:16px;border-bottom:1px solid #24284a}
+nav a{margin-right:12px;color:var(--txt);text-decoration:none}
+nav a.active{background:var(--acc);color:#fff;padding:6px 12px;border-radius:10px}
+button{background:var(--acc);border:none;color:#fff;padding:6px 10px;border-radius:8px}
+main{max-width:900px;margin:auto;padding:16px}
+.card{background:var(--card);border-radius:14px;padding:14px;margin-bottom:12px}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.item{background:#0b0e1a;border-radius:12px;padding:10px;animation:itemFade .6s ease forwards}
+.badge{background:#222766;border-radius:8px;padding:2px 8px;font-size:12px;margin-right:4px}
+.page-animate{animation:fadeSlide .8s ease forwards}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes itemFade{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+</style>
+</head>
+<body>
+<header>
+<h1>🎬 Film List</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="anime.html">Anime</a>
+<a href="game.html">Game</a>
+<a href="film.html" class="active">Film</a>
+<button onclick="toggle()">🌗</button>
+</nav>
+</header>
+
+<main class="page-animate">
+<div class="card">
+<input id="q" placeholder="Cari film…" oninput="render()">
+<select id="genreFilter" onchange="render()">
+<option value="">Semua Genre</option>
+<option value="Animation">Animation</option>
+<option value="Action">Action</option>
+<option value="Fantasy">Fantasy</option>
+<option value="Drama">Drama</option>
+<option value="Comedy">Comedy</option>
+<option value="Sci-Fi">Sci-Fi</option>
+<option value="Local">Indonesia</option>
+</select>
+</div>
+
+<div class="card">
+<h2>📊 Statistik Film</h2>
+<p id="totalFilm"></p>
+<p id="azFilm"></p>
+</div>
+
+<div class="list" id="list"></div>
+</main>
+
+<script>
+const film=[
+ {name:'Big Hero 6 (2014)',genre:'Animation'},
+ {name:'Brave (2012)',genre:'Animation'},
+ {name:'Despicable Me (2010)',genre:'Animation'},
+ {name:'Ferdinand (2017)',genre:'Animation'},
+ {name:'Finding Dory (2016)',genre:'Animation'},
+ {name:'Finding Nemo (2003)',genre:'Animation'},
+ {name:'Frozen (2013)',genre:'Animation'},
+ {name:'How to Train Your Dragon (2010)',genre:'Animation'},
+ {name:'Ice Age (2002)',genre:'Animation'},
+ {name:'Inside Out (2015)',genre:'Animation'},
+ {name:'Kung Fu Panda (2008)',genre:'Animation'},
+ {name:'Madagascar (2005)',genre:'Animation'},
+ {name:'Minions (2015)',genre:'Animation'},
+ {name:'Moana (2016)',genre:'Animation'},
+ {name:'Monsters University (2013)',genre:'Animation'},
+ {name:'Ne Zha (2019)',genre:'Animation'},
+ {name:'Penguins of Madagascar (2014)',genre:'Animation'},
+ {name:'Spider-Man: Into the Spider-Verse (2018)',genre:'Animation'},
+ {name:'Tangled (2010)',genre:'Animation'},
+ {name:'The Boss Baby (2017)',genre:'Animation'},
+ {name:'The Croods (2013)',genre:'Animation'},
+ {name:'The Good Dinosaur (2015)',genre:'Animation'},
+ {name:'Turbo (2013)',genre:'Animation'},
+ {name:'Up (2009)',genre:'Animation'},
+ {name:'Wreck-It Ralph (2012)',genre:'Animation'},
+ {name:'Zootopia (2016)',genre:'Animation'},
+
+ {name:'Godzilla (2014)',genre:'Action'},
+ {name:'Godzilla vs Kong (2021)',genre:'Action'},
+ {name:'King Kong (2005)',genre:'Action'},
+ {name:'Transformers (2007)',genre:'Action'},
+ {name:'Ip Man (2008)',genre:'Action'},
+ {name:'Sisu (2022)',genre:'Action'},
+
+ {name:'Jurassic World (2015)',genre:'Sci-Fi'},
+ {name:'Space Sweepers (2021)',genre:'Sci-Fi'},
+ {name:'Troll (2022)',genre:'Fantasy'},
+
+ {name:'Nanny McPhee (2005)',genre:'Comedy'},
+
+ {name:'Agak Laen (2024)',genre:'Local'},
+ {name:'Ayat-Ayat Cinta (2008)',genre:'Local'},
+ {name:'Kang Mak from Pee Mak (2024)',genre:'Local'},
+ {name:'Qodrat (2022)',genre:'Local'}
+];
+
+function render(){
+ const q=document.getElementById('q').value.toLowerCase();
+ const g=document.getElementById('genreFilter').value;
+ list.innerHTML=film
+ .filter(x=>x.name.toLowerCase().includes(q))
+ .filter(x=>!g || x.genre===g)
+ .sort((a,b)=>a.name.localeCompare(b.name))
+ .map(x=>`<div class='item'><b>${x.name}</b><br><span class='badge'>${x.genre}</span></div>`)
+ .join('');
+}
+
+// Statistik
+const total = film.length;
+document.getElementById('totalFilm').innerText = 'Total Film : ' + total;
+
+function toggle(){
+ document.body.classList.toggle('light');
+ localStorage.mode=document.body.classList.contains('light')?'light':'dark';
+}
+if(localStorage.mode==='light')document.body.classList.add('light');
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime List – Rizal</title>
+<style>
+:root{--bg:#0f1220;--card:#171a2e;--txt:#a76133;--muted:#9aa0c3;--acc:#6c7cff}
+body.light{--bg:#f4f6ff;--card:#fff;--txt:#111;--muted:#555;--acc:#3b5cff}
+*{box-sizing:border-box;font-family:system-ui}
+body{margin:0;background:var(--bg);color:var(--txt)}
+header{padding:16px;border-bottom:1px solid #24284a}
+nav a{margin-right:12px;color:var(--txt);text-decoration:none}
+nav a.active{background:var(--acc);color:#fff;padding:6px 12px;border-radius:10px}
+button{background:var(--acc);border:none;color:#fff;padding:6px 10px;border-radius:8px}
+main{max-width:900px;margin:auto;padding:16px}
+.card{background:var(--card);border-radius:14px;padding:14px;margin-bottom:12px}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.item{background:#0b0e1a;border-radius:12px;padding:10px;cursor:pointer;animation:itemFade .6s ease forwards}
+.badge{background:#222766;border-radius:8px;padding:2px 8px;font-size:12px;margin-right:4px}
+.page-animate{animation:fadeSlide .8s ease forwards}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes itemFade{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+</style>
+</head>
+<body>
+<header>
+<h1>📺 Anime List</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="anime.html" class="active">Anime</a>
+<a href="game.html">Game</a>
+<a href="film.html">Film</a>
+<button onclick="toggle()">🌗</button>
+</nav>
+</header>
+
+<main class="page-animate">
+<div class="card">
+<input id="q" placeholder="Cari anime…" oninput="render()">
+<select id="genreFilter" onchange="render()">
+<option value="">Semua Genre</option>
+<option value="Action">Action</option>
+<option value="Fantasy">Fantasy</option>
+<option value="Isekai">Isekai</option>
+<option value="Romance">Romance</option>
+<option value="Comedy">Comedy</option>
+</select>
+</div>
+
+<div class="card">
+<h2>📊 Statistik Anime</h2>
+<p id="total"></p>
+</div>
+
+<div class="list" id="list"></div>
+</main>
+
+<script>
+const anime=[
+ {id:'aot',name:'Attack on Titan',genre:'Action',season:'S1–S4',desc:'Manusia melawan Titan raksasa.'},
+ {id:'frieren',name:'Sousou no Frieren',genre:'Fantasy',season:'S1',desc:'Perjalanan elf setelah pahlawan gugur.'},
+ {id:'sl',name:'Solo Leveling',genre:'Action',season:'S1',desc:'Hunter terlemah menjadi terkuat.'},
+ {id:'opm',name:'One Punch Man',genre:'Comedy',season:'S1–S3',desc:'Hero botak super kuat.'},
+ {id:'isekai',name:'Isekai Smartphone',genre:'Isekai',season:'S1–S2',desc:'Reinkarnasi dengan smartphone.'}
+];
+
+function openDetail(id){
+ location.href='anime.html?id='+id;
+}
+
+function render(){
+ const q=document.getElementById('q').value.toLowerCase();
+ const g=document.getElementById('genreFilter').value;
+ list.innerHTML=anime
+ .filter(x=>x.name.toLowerCase().includes(q))
+ .filter(x=>!g||x.genre===g)
+ .sort((a,b)=>a.name.localeCompare(b.name))
+ .map(x=>`<div class='item' onclick="openDetail('${x.id}')"><b>${x.name}</b><br><span class='badge'>${x.genre}</span> <span class='badge'>${x.season}</span></div>`)
+ .join('');
+}
+
+document.getElementById('total').innerText='Total Anime : '+anime.length;
+
+function toggle(){
+ document.body.classList.toggle('light');
+ localStorage.mode=document.body.classList.contains('light')?'light':'dark';
+}
+if(localStorage.mode==='light')document.body.classList.add('light');
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game List – Rizal</title>
+<style>
+    nav a.active{
+  background:var(--acc);
+  color:#fff;
+  padding:6px 12px;
+  border-radius:10px;
+}
+:root{--bg:#0f1220;--card:#171a2e;--txt:#eaeaf0;--muted:#9aa0c3;--acc:#6c7cff}
+body.light{--bg:#f4f6ff;--card:#fff;--txt:#111;--muted:#555;--acc:#3b5cff}
+*{box-sizing:border-box;font-family:system-ui}
+body{margin:0;background:var(--bg);color:var(--txt)}
+header{padding:16px;border-bottom:1px solid #24284a}
+nav a{margin-right:12px;color:var(--txt);text-decoration:none}
+button{background:var(--acc);border:none;color:#fff;padding:6px 10px;border-radius:8px}
+main{max-width:900px;margin:auto;padding:16px}
+.card{background:var(--card);border-radius:14px;padding:14px;margin-bottom:12px}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.item{background:#0b0e1a;border-radius:12px;padding:10px}
+.badge{background:#222766;border-radius:8px;padding:2px 8px;font-size:12px;margin-right:4px}
+/* ===== PAGE ANIMATION ===== */
+.page-animate{
+  animation:fadeSlide .8s ease forwards;
+}
+
+@keyframes fadeSlide{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* animasi item grid */
+.item{
+  animation:itemFade .6s ease forwards;
+}
+
+@keyframes itemFade{
+  from{
+    opacity:0;
+    transform:scale(.96);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+</style>
+</head>
+<body>
+<header>
+<h1>🎮 Game List</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="anime.html">Anime</a>
+<a href="game.html" class="active">Game</a>
+<a href="film.html">Film</a>
+<button onclick="toggle()">🌗</button>
+</nav>
+</header>
+<main class="page-animate">
+<div class="card">
+<input id="q" placeholder="Cari game…" oninput="render()">
+</div>
+
+<div class="card">
+<h2>📊 Statistik Game</h2>
+<p id="totalGame"></p>
+<p id="azGame"></p>
+</div>
+
+<div class="list" id="list"></div>
+</main>
+
+<script>
+const game=[
+  'Genshin Impact','Honkai Star Rail','Roblox','Call of Duty Mobile','Delta Force','Minecrat TLauncher',
+  'Blood Strike','Mi Side','Sky : Children of The Light'
+];
+
+function render(){
+ const q=document.getElementById('q').value.toLowerCase();
+ list.innerHTML=game.filter(g=>g.toLowerCase().includes(q)).sort()
+ .map(g=>`<div class='item'><b>${g}</b></div>`).join('');
+}
+
+// Statistik
+const total = game.length;
+document.getElementById('totalGame').innerText = 'Total Game : ' + total;
+
+
+function toggle(){
+ document.body.classList.toggle('light');
+ localStorage.mode=document.body.classList.contains('light')?'light':'dark';
+}
+if(localStorage.mode==='light')document.body.classList.add('light');
+render();
+</script>
+</body>
+</html>
