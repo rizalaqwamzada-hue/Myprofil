@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>rizal aqwam Home| Link Bio</title>
 <style>
 *{
@@ -20,6 +21,7 @@ body{
 
 main{
   max-width:820px;
+  width:90%:
   margin:auto;
   padding:40px 20px;
   text-align:center;
@@ -50,6 +52,8 @@ p{
     inset 0 0 12px rgba(56,189,248,.08);
   transition:.25s ease;
   animation:fadeUp .9s ease forwards;
+  width:100%;
+  box-sizing:border-box;
 }
 
 .card:hover{
@@ -61,6 +65,7 @@ p{
 
 a{
   display:flex;
+  flex-wrap:wrap;
   align-items:center;
   justify-content:center;
   gap:8px;
@@ -152,6 +157,22 @@ small{
   to{width:100%;}
 }
 
+/* ===== RESPONSIVE MEDIA QUERY ===== */
+@media (max-width: 600px) {
+  main{
+    padding:20px 10px;
+  }
+  h1{
+    font-size:1.8rem;
+  }
+  .card{
+    padding:16px;
+    margin:16px 0;
+  }
+  a{
+    padding:10px;
+    font-size:0.9rem;
+  }
 </style>
 
 </head>
@@ -197,4 +218,5 @@ window.addEventListener("load",()=>{
 </script>
 </body>
 </html>
+
 
