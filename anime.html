@@ -54,6 +54,35 @@ main{max-width:900px;margin:auto;padding:16px}
 </div>
 
 <div class="list" id="list"></div>
+ <div id="popup" style="display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.8);
+align-items:center;
+justify-content:center;">
+
+<div style="
+background:#171a2e;
+padding:20px;
+border-radius:14px;
+max-width:400px;
+text-align:center">
+
+<img id="pimg" style="width:100%;border-radius:10px">
+
+<h2 id="ptitle"></h2>
+
+<p id="pdesc"></p>
+
+<p>
+<a id="poff" target="_blank">🔗 Link Resmi</a><br>
+<a id="punoff" target="_blank">🔗 Link Tidak Resmi</a>
+</p>
+
+<button onclick="closePopup()">Tutup</button>
+
+</div>
+</div>
 </main>
 
 <script>
@@ -71,9 +100,22 @@ main{max-width:900px;margin:auto;padding:16px}
  ];
 
 function openDetail(id){
- location.href='anime.html?id='+id;
+
+ const a = anime.find(x=>x.id===id)
+
+ document.getElementById("pimg").src=a.img
+ document.getElementById("ptitle").innerText=a.name
+ document.getElementById("pdesc").innerText=a.desc
+ document.getElementById("poff").href=a.official
+ document.getElementById("punoff").href=a.unofficial
+
+ document.getElementById("popup").style.display="flex"
+
 }
 
+ function closePopup(){
+ document.getElementById("popup").style.display="none"
+}
 function render(){
  const q=document.getElementById('q').value.toLowerCase();
  const g=document.getElementById('genreFilter').value;
@@ -96,6 +138,7 @@ render();
 </script>
 </body>
 </html>
+
 
 
 
