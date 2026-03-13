@@ -11,6 +11,12 @@ body.light{--bg:#f4f6ff;--card:#fff;--txt:#111;--muted:#555;--acc:#3b5cff}
 body{margin:0;background:var(--bg);color:var(--txt)}
 header{padding:16px;border-bottom:1px solid #24284a}
 nav a{margin-right:12px;color:var(--txt);text-decoration:none}
+#pimg{
+width:100%;
+max-height:420px;
+object-fit:cover;
+image-rendering:auto;
+}
 nav a.active{background:var(--acc);color:#fff;padding:6px 12px;border-radius:10px}
 button{background:var(--acc);border:none;color:#fff;padding:6px 10px;border-radius:8px}
 main{max-width:900px;margin:auto;padding:16px}
@@ -54,7 +60,8 @@ main{max-width:900px;margin:auto;padding:16px}
 </div>
 
 <div class="list" id="list"></div>
- <div id="popup" style="display:none;
+<div id="popup" style="
+display:none;
 position:fixed;
 inset:0;
 background:rgba(0,0,0,.8);
@@ -65,7 +72,7 @@ justify-content:center;">
 background:#171a2e;
 padding:20px;
 border-radius:14px;
-max-width:400px;
+max-width:420px;
 text-align:center">
 
 <img id="pimg" style="width:100%;border-radius:10px">
@@ -138,8 +145,3 @@ render();
 </script>
 </body>
 </html>
-
-
-
-
-
