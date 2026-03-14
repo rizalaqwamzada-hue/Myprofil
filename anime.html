@@ -46,13 +46,31 @@ main{max-width:900px;margin:auto;padding:16px}
 <input id="q" placeholder="Cari anime…" oninput="render()">
 <select id="genreFilter" onchange="render()">
 <option value="">Semua Genre</option>
-<option value="adventure">adventure</option>
+<option value="adventure">Adventure</option>
 <option value="Action">Action</option>
-<option value="Fantasy">Fantasy</option>
-<option value="Isekai">Isekai</option>
-<option value="Romance">Romance</option>
 <option value="Comedy">Comedy</option>
-<option value="vrmmo">vrmmo</option>
+<option value="Dark Comedy">Dark Comedy</option>
+<option value="Dark Fantasy">Dark Fantasy</option>
+<option value="Drama">Drama</option>
+<option value="3cch1">3cch1</option>
+<option value="Fantasy">Fantasy</option>
+<option value="Game">Game</option>
+<option value="Harem">Harem</option>
+<option value="Horror">Horror</option>
+<option value="Isekai">Isekai</option>
+<option value="Magic">Magic</option>
+<option value="Martial Arts">Martial Arts</option>
+<option value="Mecha">Mecha</option>
+<option value="Military">Military</option>
+<option value="Music">Music</option>
+<option value="Mystery">Mystery</option>
+<option value="Romance">Romance</option>
+<option value="School">School</option>
+<option value="Sci-Fi">Sci-Fi</option>
+<option value="Seinen">Seinen</option>
+<option value="Slice of Life">Slice of Life</option>
+<option value="Supernatural">Supernatural</option>
+<option value="Vrmmo">Vrmmo</option>
 </select>
 </div>
 
@@ -99,7 +117,7 @@ text-align:center">
  {
  id:'arank',
  name:'A-Rank Party',
- genre:'Action', 'Fantasy',
+ genre:['Action','Fantasy'],
  season:'S1',
  desc:'Petualang kuat dikeluarkan dari party rank A dan membuktikan dirinya bisa menjadi lebih kuat sendiri.',
  img:'img.keep/a-rank.jpg',
@@ -109,7 +127,7 @@ text-align:center">
  {
  id:'ansatsu',
  name:'Ansatsu Kyoushitsu',
- genre:'Action',
+ genre:['Action','Comedy'],
  season:'S1-S2',
  desc:'Sekelompok murid ditugaskan membunuh guru mereka yang merupakan makhluk super sebelum ia menghancurkan bumi.',
  img:'img.keep/ansatsu.jpg',
@@ -119,7 +137,7 @@ text-align:center">
  {
  id:'akame',
  name:'Akame ga Kill',
- genre:'Action',
+ genre:['Action','Dark Fantasy'],
  season:'S1',
  desc:'Seorang pemuda bergabung dengan kelompok pembunuh Night Raid untuk melawan kekaisaran yang korup.',
  img:'img.keep/akame.jpg',
@@ -129,7 +147,7 @@ text-align:center">
 {
  id:'aot',
  name:'Attack on Titan',
- genre:'Action',
+ genre:['Action','Drama','Dark Fantasy'],
  season:'S1-S4',
  desc:'Manusia bertahan hidup di balik tembok raksasa untuk melindungi diri dari Titan pemakan manusia.',
  img:'img.keep/aot.jpg',
@@ -139,7 +157,7 @@ text-align:center">
 {
  id:'arifureta',
  name:'Arifureta',
- genre:'Isekai',
+ genre:['Isekai','Action','Harem'],
  season:'S1-S3',
  desc:'Seorang siswa yang dianggap lemah jatuh ke jurang dungeon dan bangkit menjadi petualang yang sangat kuat.',
  img:'img.keep/arifureta.jpg',
@@ -150,7 +168,7 @@ text-align:center">
 {
  id:'blackclover',
  name:'Black Clover',
- genre:'Action',
+ genre:['Action','Fantasy'],
  season:'S1',
  desc:'Asta, seorang anak tanpa sihir di dunia penuh sihir, bercita-cita menjadi Kaisar Sihir dengan tekad dan latihan keras.',
  img:'img.keep/blackclover.jpg',
@@ -161,7 +179,7 @@ text-align:center">
 {
  id:'bofuri',
  name:'Bofuri',
- genre:'Game',
+ genre:['Game','Comedy','Vrmmo'],
  season:'S1–S2',
  desc:'Seorang pemain baru di game VRMMO menaruh semua stat ke defense dan menjadi karakter yang hampir tidak bisa dikalahkan.',
  img:'img.keep/bofuri.jpg',
@@ -172,7 +190,7 @@ text-align:center">
 {
  id:'bokukanojo',
  name:'Boku no Kanojo',
- genre:'Romance',
+ genre:['Romance','Comedy'],
  season:'S1',
  desc:'Cerita hubungan unik seorang siswa dengan pacarnya yang memiliki sifat dan kebiasaan yang tidak biasa.',
  img:'img.keep/bokukanojo.jpg',
@@ -183,7 +201,7 @@ text-align:center">
 {
  id:'bokutsuma',
  name:'Boku no Tsuma wa Kanjou ga Nai',
- genre:'Romance',
+ genre:['Romance','Sci-Fi'],
  season:'S1',
  desc:'Seorang pria membeli robot rumah tangga yang perlahan mulai menunjukkan emosi dan membangun hubungan dengan pemiliknya.',
  img:'img.keep/bokutsuma.jpg',
@@ -194,7 +212,7 @@ text-align:center">
 {
  id:'boruto',
  name:'Boruto',
- genre:'Action',
+ genre:['Action','Adventure'],
  season:'S1',
  desc:'Putra Naruto, Boruto Uzumaki, menjalani kehidupan ninja generasi baru dengan tantangan dan musuh yang berbeda.',
  img:'img.keep/boruto.jpg',
@@ -205,7 +223,7 @@ text-align:center">
 {
  id:'boukensha',
  name:'Boukensha ni Naritai',
- genre:'Fantasy',
+ genre:['Action','Fantasy'],
  season:'S1',
  desc:'Seorang gadis pemalu bermimpi menjadi petualang hebat dan mulai menjalani perjalanan di dunia penuh monster.',
  img:'img.keep/boukensha.jpg',
@@ -216,7 +234,7 @@ text-align:center">
 {
  id:'berserkgluttony',
  name:'Boushoku no Berserk',
- genre:'Action',
+ genre:['Action','Dark Fantasy'],
  season:'S1',
  desc:'Seorang penjaga dengan skill “Gluttony” yang dianggap tidak berguna ternyata memiliki kekuatan memakan kemampuan musuh.',
  img:'img.keep/boushoku.jpg',
@@ -227,7 +245,7 @@ text-align:center">
 {
  id:'busamenfighter',
  name:'Busamen Gachi Fighter',
- genre:'Action',
+ genre:['Action','Isekai','Comedy'],
  season:'S1',
  desc:'Seorang pria dengan wajah buruk tetapi kekuatan luar biasa bertarung untuk membuktikan dirinya di dunia penuh petarung kuat.',
  img:'img.keep/busamen.jpg',
@@ -238,7 +256,7 @@ text-align:center">
 {
  id:'butaliver',
  name:'Buta no Liver',
- genre:'Fantasy',
+ genre:['Isekai','Fantasy'],
  season:'S1',
  desc:'Seorang otaku bereinkarnasi menjadi babi di dunia fantasi dan bertemu gadis misterius yang bisa membaca pikiran.',
  img:'img.keep/buta.jpg',
@@ -253,6 +271,7 @@ function openDetail(id){
 
  document.getElementById("pimg").src=a.img
  document.getElementById("ptitle").innerText=a.name
+ document.getElementById("pgenre").innerText=a.genre
  document.getElementById("pdesc").innerText=a.desc
  document.getElementById("poff").href=a.official
  document.getElementById("punoff").href=a.unofficial
@@ -269,9 +288,13 @@ function render(){
  const g=document.getElementById('genreFilter').value;
  list.innerHTML=anime
  .filter(x=>x.name.toLowerCase().includes(q))
- .filter(x=>!g||x.genre===g)
+ .filter(x=>!g || x.genre.includes(g))
  .sort((a,b)=>a.name.localeCompare(b.name))
- .map(x=>`<div class='item' onclick="openDetail('${x.id}')"><b>${x.name}</b><br><span class='badge'>${x.genre}</span> <span class='badge'>${x.season}</span></div>`)
+ .map(x=>`<div class='item' onclick="openDetail('${x.id}')">
+ <b>${x.name}</b><br>
+ <span class='badge'>${x.genre.join(', ')}</span>
+ <span class='badge'>${x.season}</span>
+ </div>`)
  .join('');
 }
 
