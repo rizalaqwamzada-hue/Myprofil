@@ -28,7 +28,9 @@ main{max-width:900px;margin:auto;padding:16px}
 @keyframes fadeSlide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes itemFade{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
 </style>
+ 
 </head>
+ 
 <body>
 <header>
 <h1>📺 Anime List</h1>
@@ -46,7 +48,7 @@ main{max-width:900px;margin:auto;padding:16px}
 <input id="q" placeholder="Cari anime…" oninput="render()">
 <select id="genreFilter" onchange="render()">
 <option value="">Semua Genre</option>
-<option value="adventure">Adventure</option>
+<option value="Adventure">Adventure</option>
 <option value="Action">Action</option>
 <option value="Comedy">Comedy</option>
 <option value="Dark Comedy">Dark Comedy</option>
@@ -98,6 +100,8 @@ text-align:center">
 <img id="pimg" style="width:100%;border-radius:10px">
 
 <h2 id="ptitle"></h2>
+
+<p id="pgenre"></p>
 
 <p id="pdesc"></p>
 
@@ -271,7 +275,7 @@ function openDetail(id){
 
  document.getElementById("pimg").src=a.img
  document.getElementById("ptitle").innerText=a.name
- document.getElementById("pgenre").innerText=a.genre
+ document.getElementById("pgenre").innerText=a.genre.join(', ')
  document.getElementById("pdesc").innerText=a.desc
  document.getElementById("poff").href=a.official
  document.getElementById("punoff").href=a.unofficial
