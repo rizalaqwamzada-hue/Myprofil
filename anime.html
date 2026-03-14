@@ -118,8 +118,18 @@ text-align:center">
 <p id="pdesc"></p>
 
 <p>
-<a id="poff" target="_blank">🔗 Official</a><br>
-<a id="punoff" target="_blank">🔗Alternative</a>
+<a id="poff" target="_blank">
+<img src="img.keep/logo1.jpg" width="30">
+</a><br>
+<a id="punoff" target="_blank">
+<img src="img.keep/logo2.jpg" width="30">
+</a>
+ <a id="plink2" target="_blank">
+<img src="img.keep/logo3.jpg" width="30">
+</a>
+ <a id="plink3" target="_blank">
+<img src="img.keep/logo4.jpg" width="30">
+</a>
 </p>
 
 <button onclick="closePopup()">Tutup</button>
@@ -137,8 +147,16 @@ text-align:center">
  season:'S1',
  desc:'Petualang kuat dikeluarkan dari party rank A dan membuktikan dirinya bisa menjadi lebih kuat sendiri.',
  img:'img.keep/a-rank.jpg',
- official:'https://www.crunchyroll.com',
- unofficial:'https://samehadaku.day'
+  
+ official:'https://www.bilibili.tv/play/2122082',
+ unofficial:'https://otakudesu.blog/anime/a-rank-party-sub-indo/',
+ link2:'https://v2.samehadaku.how/anime/a-rank-party-wo-ridatsu-shita-ore-wa-moto-oshiego-tachi-to-meikyuu-shinbu-wo-mezasu/',
+ link3:'https://myanimelist.net/anime/59730/A-Rank_Party_wo_Ridatsu_shita_Ore_wa_Moto_Oshiego-tachi_to_Meikyuu_Shinbu_wo_Mezasu?q=a%20rank&cat=anime',
+ 
+  logo1:'img.keep/logo1.jpg',
+  logo2:'img.keep/logo2.jpg',
+  logo3:'img.keep/logo3.jpg',
+  logo4:'img.keep/logo4.jpg',
  },
  {
  id:'ansatsu',
@@ -213,7 +231,7 @@ text-align:center">
  official:'https://www.crunchyroll.com',
  unofficial:'https://samehadaku.day'
 },
-
+  
 {
  id:'bokutsuma',
  name:'Boku no Tsuma wa Kanjou ga Nai',
@@ -286,11 +304,19 @@ function openDetail(id){
  const a = anime.find(x=>x.id===id)
 
  document.getElementById("pimg").src=a.img
+ 
+  document.getElementById("logo1").src=a.logo1
+  document.getElementById("logo2").src=a.logo2
+  document.getElementById("logo3").src=a.logo3
+  document.getElementById("logo4").src=a.logo4
+ 
  document.getElementById("ptitle").innerText=a.name
  document.getElementById("pgenre").innerText=a.genre.join(', ')
  document.getElementById("pdesc").innerText=a.desc
  document.getElementById("poff").href=a.official
  document.getElementById("punoff").href=a.unofficial
+ document.getElementById("plink2").href=a.link2
+ document.getElementById("plink3").href=a.link3
 
  document.getElementById("popup").style.display="flex"
 
