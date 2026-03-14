@@ -22,7 +22,11 @@ button{background:var(--acc);border:none;color:#fff;padding:6px 10px;border-radi
 main{max-width:900px;margin:auto;padding:16px}
 .card{background:var(--card);border-radius:14px;padding:14px;margin-bottom:12px}
 .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
-.item{background:#0b0e1a;border-radius:12px;padding:10px;cursor:pointer;animation:itemFade .6s ease forwards}
+.item{background:#0b0e1a;border-radius:12px;padding:10px;cursor:pointer;animation:itemFade .6s ease forwards;color:white;}
+ body.light .item{
+ background:#e9ecff;
+color:#111;
+}
 .badge{background:#222766;border-radius:8px;padding:2px 8px;font-size:12px;margin-right:4px}
 .page-animate{animation:fadeSlide .8s ease forwards}
 @keyframes fadeSlide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
