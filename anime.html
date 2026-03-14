@@ -168,10 +168,9 @@ text-align:center">
  season:'S1-S2',
  desc:'Sekelompok murid ditugaskan membunuh guru mereka yang merupakan makhluk super sebelum ia menghancurkan bumi.',
  img:'img.keep/ansatsu.jpg',
+ links:[]
 
-  links:[
-  
-  ]
+ 
 },
  {
  id:'akame',
@@ -180,9 +179,8 @@ text-align:center">
  season:'S1',
  desc:'Seorang pemuda bergabung dengan kelompok pembunuh Night Raid untuk melawan kekaisaran yang korup.',
  img:'img.keep/akame.jpg',
- links:[
+ links:[]
 
- ]
 },
 {
  id:'aot',
@@ -191,8 +189,8 @@ text-align:center">
  season:'S1-S4',
  desc:'Manusia bertahan hidup di balik tembok raksasa untuk melindungi diri dari Titan pemakan manusia.',
  img:'img.keep/aot.jpg',
- official:'https://www.crunchyroll.com',
- unofficial:'https://samehadaku.day'
+ links:[]
+
 },
 {
  id:'arifureta',
@@ -201,8 +199,8 @@ text-align:center">
  season:'S1-S3',
  desc:'Seorang siswa yang dianggap lemah jatuh ke jurang dungeon dan bangkit menjadi petualang yang sangat kuat.',
  img:'img.keep/arifureta.jpg',
- official:'https://www.crunchyroll.com',
- unofficial:'https://samehadaku.day'
+ links:[]
+
 },
  
 {
@@ -212,8 +210,8 @@ text-align:center">
  season:'S1',
  desc:'Asta, seorang anak tanpa sihir di dunia penuh sihir, bercita-cita menjadi Kaisar Sihir dengan tekad dan latihan keras.',
  img:'img.keep/blackclover.jpg',
- official:'https://www.crunchyroll.com',
- unofficial:'https://samehadaku.day'
+ links:[]
+
 },
 
 {
@@ -223,8 +221,8 @@ text-align:center">
  season:'S1–S2',
  desc:'Seorang pemain baru di game VRMMO menaruh semua stat ke defense dan menjadi karakter yang hampir tidak bisa dikalahkan.',
  img:'img.keep/bofuri.jpg',
- official:'https://www.crunchyroll.com',
- unofficial:'https://samehadaku.day'
+ links:[]
+
 },
 
 {
@@ -234,8 +232,8 @@ text-align:center">
  season:'S1',
  desc:'Cerita hubungan unik seorang siswa dengan pacarnya yang memiliki sifat dan kebiasaan yang tidak biasa.',
  img:'img.keep/bokukanojo.jpg',
- official:'https://www.crunchyroll.com',
- unofficial:'https://samehadaku.day'
+ links:[]
+
 },
   
 {
@@ -245,8 +243,8 @@ text-align:center">
  season:'S1',
  desc:'Seorang pria membeli robot rumah tangga yang perlahan mulai menunjukkan emosi dan membangun hubungan dengan pemiliknya.',
  img:'img.keep/bokutsuma.jpg',
- official:'https://www.crunchyroll.com',
- unofficial:'https://samehadaku.day'
+ links:[]
+
 },
 
 {
@@ -256,8 +254,8 @@ text-align:center">
  season:'S1',
  desc:'Putra Naruto, Boruto Uzumaki, menjalani kehidupan ninja generasi baru dengan tantangan dan musuh yang berbeda.',
  img:'img.keep/boruto.jpg',
- official:'https://www.crunchyroll.com',
- unofficial:'https://samehadaku.day'
+ links:[]
+
 },
 
 {
@@ -267,8 +265,8 @@ text-align:center">
  season:'S1',
  desc:'Seorang gadis pemalu bermimpi menjadi petualang hebat dan mulai menjalani perjalanan di dunia penuh monster.',
  img:'img.keep/boukensha.jpg',
- official:'https://www.crunchyroll.com',
- unofficial:'https://samehadaku.day'
+ links:[]
+
 },
 
 {
@@ -278,8 +276,8 @@ text-align:center">
  season:'S1',
  desc:'Seorang penjaga dengan skill “Gluttony” yang dianggap tidak berguna ternyata memiliki kekuatan memakan kemampuan musuh.',
  img:'img.keep/boushoku.jpg',
- official:'https://www.crunchyroll.com',
- unofficial:'https://samehadaku.day'
+ links:[]
+
 },
 
 {
@@ -289,8 +287,8 @@ text-align:center">
  season:'S1',
  desc:'Seorang pria dengan wajah buruk tetapi kekuatan luar biasa bertarung untuk membuktikan dirinya di dunia penuh petarung kuat.',
  img:'img.keep/busamen.jpg',
- official:'https://www.crunchyroll.com',
- unofficial:'https://samehadaku.day'
+ links:[]
+
 },
 
 {
@@ -300,8 +298,8 @@ text-align:center">
  season:'S1',
  desc:'Seorang otaku bereinkarnasi menjadi babi di dunia fantasi dan bertemu gadis misterius yang bisa membaca pikiran.',
  img:'img.keep/buta.jpg',
- official:'https://www.crunchyroll.com',
- unofficial:'https://samehadaku.day'
+ links:[]
+
 },
  ];
 
@@ -332,14 +330,27 @@ function openDetail(id){
  document.getElementById("pdesc").innerText=a.desc
 const linkBox=document.getElementById("links")
 
+if(a.links && a.links.length > 0){
+
 linkBox.innerHTML = a.links.map(link => `
 <a href="${link}" target="_blank">
 <img src="${getLogo(link)}" width="35">
 </a>
 `).join('')
 
+}else{
+
+linkBox.innerHTML = "Link belum tersedia"
+
+}
+
+
  document.getElementById("popup").style.display="flex"
 
+}
+
+ document.getElementById("popup").onclick=function(e){
+ if(e.target.id==="popup") closePopup()
 }
 
  function closePopup(){
@@ -348,7 +359,8 @@ linkBox.innerHTML = a.links.map(link => `
 function render(){
  const q=document.getElementById('q').value.toLowerCase();
  const g=document.getElementById('genreFilter').value;
- list.innerHTML=anime
+ 
+ document.getElementById("list").innerHTML=anime
  .filter(x=>x.name.toLowerCase().includes(q))
  .filter(x=>!g || x.genre.includes(g))
  .sort((a,b)=>a.name.localeCompare(b.name))
