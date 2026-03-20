@@ -318,7 +318,7 @@ function getLogo(url){
  if(url.includes('samehadaku')) return logos.samehadaku
  if(url.includes('otakudesu')) return logos.otakudesu
  if(url.includes('myanimelist')) return logos.myanimelist
- return ''
+ return 'img.keep/default.png' // 🔥 fallback
 }
  
 function openDetail(id){
@@ -333,7 +333,7 @@ function openDetail(id){
  document.getElementById("pdesc").innerText=a.desc
 const linkBox=document.getElementById("links")
 
-if(a.links && a.links.length > 0){
+if(Array.isArray(a.links) && a.links.length > 0){
 
 linkBox.innerHTML = a.links.map(link => `
 <div style="text-align:center">
