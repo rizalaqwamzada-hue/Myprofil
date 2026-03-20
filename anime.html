@@ -154,10 +154,10 @@ text-align:center">
  img:'img.keep/a-rank.jpg',
 
   links:[
- 'https://www.bilibili.tv/play/2122082',
- 'https://otakudesu.blog/anime/a-rank-party-sub-indo/',
- 'https://v2.samehadaku.how/anime/a-rank-party-wo-ridatsu-shita-ore-wa-moto-oshiego-tachi-to-meikyuu-shinbu-wo-mezasu/',
- 'https://myanimelist.net/anime/59730/A-Rank_Party_wo_Ridatsu_shita_Ore_wa_Moto_Oshiego-tachi_to_Meikyuu_Shinbu_wo_Mezasu?q=a%20rank&cat=anime',
+   {name:'Bilibili',url:'https://www.bilibili.tv/play/2122082'},
+   {name:'Otakudesu',url:'https://otakudesu.blog/anime/a-rank-party-sub-indo/'},
+   {name:'Samehadaku',url:'https://v2.samehadaku.how/anime/a-rank-party-wo-ridatsu-shita-ore-wa-moto-oshiego-tachi-to-meikyuu-shinbu-wo-mezasu/'},
+   {name:'MyAnimeList',url:'https://myanimelist.net/anime/59730/A-Rank_Party_wo_Ridatsu_shita_Ore_wa_Moto_Oshiego-tachi_to_Meikyuu_Shinbu_wo_Mezasu?q=a%20rank&cat=anime'},
  ]
 
  },
@@ -168,7 +168,10 @@ text-align:center">
  season:'S1-S2',
  desc:'Sekelompok murid ditugaskan membunuh guru mereka yang merupakan makhluk super sebelum ia menghancurkan bumi.',
  img:'img.keep/ansatsu.jpg',
- links:[]
+ links:[
+  {name:'Otakudesu',url:'https://otakudesu.blog/anime/ansatskyoutsu-subtitle-indonesia/'},
+  {name:'MyAnimeList',url:'https://myanimelist.net/anime/24833/Ansatsu_Kyoushitsu?q=Ansat&cat=anime'}
+ ]
 
  
 },
@@ -333,9 +336,12 @@ const linkBox=document.getElementById("links")
 if(a.links && a.links.length > 0){
 
 linkBox.innerHTML = a.links.map(link => `
-<a href="${link}" target="_blank">
-<img src="${getLogo(link)}" width="35">
+<div style="text-align:center">
+<a href="${link.url}" target="_blank">
+<img src="${getLogo(link.url)}" width="35"><br>
+<small>${link.name}</small>
 </a>
+</div>
 `).join('')
 
 }else{
