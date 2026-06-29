@@ -178,6 +178,7 @@ text-align:center">
  ]
 
 },
+  
  {
  id:'akame',
  name:'Akame ga Kill',
@@ -265,7 +266,7 @@ links:[
 id:'atri',
 name:'Atri : my Dear Moment',
 year:'',
-genre:[],
+genre:['Sci-Fi','Drama','Romance'],
 season:'',
 desc:'Seorang pemuda bertemu robot gadis misterius di dunia yang sebagian tenggelam oleh laut.',
 img:'img.keep/atri.jpg',
@@ -277,7 +278,6 @@ links:[
 ]
 
 },
-
  
 {
  id:'blackclover',
@@ -368,7 +368,6 @@ links:[
  img:'img.keep/boukensha.jpg',
  links:[
   {name:'Otakudesu',url:''},
-  {name:'MyAnimeList',url:''},
  ]
 
 },
@@ -444,7 +443,6 @@ function openDetail(id){
 
  document.getElementById("pimg").src=a.img
  
- 
  document.getElementById("ptitle").innerText=a.name
  document.getElementById("pyear").innerText =a.year ? "Tahun: " + a.year""
  document.getElementById("pgenre").innerText=a.genre.join(', ')
@@ -467,7 +465,6 @@ linkBox.innerHTML = a.links.map(link => `
 linkBox.innerHTML = "Link belum tersedia"
 
 }
-
 
  document.getElementById("popup").style.display="flex"
 
