@@ -134,6 +134,8 @@ text-align:center">
 
 <p id="pyear"></p>
 
+<p id="pseason"></p>
+
 <p id="pdesc"></p>
 
 <p id="links"></p>
@@ -441,28 +443,35 @@ function openDetail(id){
 
  const a = anime.find(x=>x.id===id)
 
- document.getElementById("pimg").src=a.img
- 
+ document.getElementById("pimg").src=a.img || "img.keep/default.jpg";
+ document.getElementById("pseason").textContent =
+    a.season ? `Season: ${a.season}` : "";
  document.getElementById("ptitle").innerText=a.name
- document.getElementById("pyear").innerText =a.year ? "Tahun: " + a.year : "";
+ document.getElementById("pyear").innerText =
+  a.year ? "Tahun: " + a.year : "";
  document.getElementById("pgenre").innerText=a.genre.join(', ')
  document.getElementById("pdesc").innerText=a.desc
+ 
 const linkBox=document.getElementById("links")
 
-if(Array.isArray(a.links) && a.links.length > 0){
+const validLinks = Array.isArray(a.links)
+    ? a.links.filter(link => link.url)
+    : [];
 
-linkBox.innerHTML = a.links.map(link => `
-<div style="text-align:center">
-<a href="${link.url}" target="_blank">
-<img src="${getLogo(link.url)}" width="35"><br>
-<small>${link.name}</small>
-</a>
-</div>
-`).join('')
+if(validLinks.length > 0){
+
+    linkBox.innerHTML = validLinks.map(link => `
+    <div style="text-align:center">
+        <a href="${link.url}" target="_blank">
+            <img src="${getLogo(link.url)}" width="35"><br>
+            <small>${link.name}</small>
+        </a>
+    </div>
+    `).join('');
 
 }else{
 
-linkBox.innerHTML = "Link belum tersedia"
+    linkBox.innerHTML = "Link belum tersedia";
 
 }
 
